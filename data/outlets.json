@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Nairobi Organic Market",
+    "coordinates": { "lat": -1.2921, "lng": 36.8219 },
+    "region": "Nairobi",
+    "categories": ["Vegetables", "Fruits"]
+  },
+  {
+    "name": "Mombasa Eco Shop",
+    "coordinates": { "lat": -4.0435, "lng": 39.6682 },
+    "region": "Mombasa",
+    "categories": ["Fruits"]
+  }
+]

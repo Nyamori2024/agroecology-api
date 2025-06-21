@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Organic Spinach",
+    "description": {
+      "en": "Fresh organic spinach, rich in iron and vitamins.",
+      "fr": "Épinards bio frais, riches en fer et en vitamines."
+    },
+    "category": "Vegetables",
+    "certification": "Certified Organic",
+    "nutritionalBenefits": ["Iron", "Vitamin A", "Fibre"],
+    "image": "/images/vegetables1.jpg"
+  },
+  {
+    "name": "Mango",
+    "description": {
+      "en": "Sweet mangoes packed with Vitamin C.",
+      "fr": "Mangues sucrées riches en vitamine C."
+    },
+    "category": "Fruits",
+    "certification": "Transitioning",
+    "nutritionalBenefits": ["Vitamin C", "Antioxidants"],
+    "image": "/images/fruits2.jpg"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "question": {
+      "en": "What is agroecology?",
+      "fr": "Qu'est-ce que l'agroécologie ?"
+    },
+    "answer": {
+      "en": "Agroecology is a sustainable farming approach that works with nature.",
+      "fr": "L'agroécologie est une approche agricole durable qui travaille avec la nature."
+    }
+  },
+  {
+    "question": {
+      "en": "Are all products certified organic?",
+      "fr": "Tous les produits sont-ils certifiés biologiques ?"
+    },
+    "answer": {
+      "en": "Not all products are certified, but many follow organic principles.",
+      "fr": "Tous les produits ne sont pas certifiés, mais beaucoup suivent des principes biologiques."
+    }
+  }
+]

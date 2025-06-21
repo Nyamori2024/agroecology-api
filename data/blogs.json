@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Benefits of Organic Vegetables",
+    "content": "Organic vegetables provide more nutrients and fewer pesticides...",
+    "tags": ["organic", "nutrition"],
+    "image": "/images/vegetables3.jpg"
+  },
+  {
+    "title": "Agroecology in East Africa",
+    "content": "Agroecology is gaining ground among smallholder farmers...",
+    "tags": ["farming", "Africa"],
+    "image": "/images/placeholder.jpg"
+  }
+]
