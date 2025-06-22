@@ -8,7 +8,7 @@
     "category": "Vegetables",
     "certification": "Certified Organic",
     "nutritionalBenefits": ["Iron", "Vitamin A", "Fibre"],
-    "image": "/images/vegetables1.jpg"
+    "image": "https://images.unsplash.com/photo-1572441710553-63b4f09f8b2e"
   },
   {
     "name": "Mango",
@@ -19,6 +19,6 @@
     "category": "Fruits",
     "certification": "Transitioning",
     "nutritionalBenefits": ["Vitamin C", "Antioxidants"],
-    "image": "/images/fruits2.jpg"
+    "image": "https://images.unsplash.com/photo-1584270354949-1f5d92d81f97"
   }
 ]

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// Schema for localized agricultural products
 const ProductSchema = new mongoose.Schema({
   name: { type: String, required: true, trim: true },
   description: {

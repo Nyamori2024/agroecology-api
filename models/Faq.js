@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+
+// Schema for multilingual FAQs
 const FaqSchema = new mongoose.Schema({
   question: {
     en: { type: String, required: true },
@@ -9,4 +11,5 @@ const FaqSchema = new mongoose.Schema({
     fr: { type: String, required: true }
   }
 });
+
 module.exports = mongoose.model('Faq', FaqSchema);

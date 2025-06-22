@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// Schema for outlet locations
 const OutletSchema = new mongoose.Schema({
   name: { type: String, required: true },
   coordinates: {
