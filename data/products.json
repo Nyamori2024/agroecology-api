@@ -1,6 +1,6 @@
 [
   {
-    "name": "Organic Spinach",
+    "name": "Organic Spinach Demo",
     "description": {
       "en": "Fresh organic spinach, rich in iron and vitamins.",
       "fr": "Épinards bio frais, riches en fer et en vitamines."
@@ -11,7 +11,7 @@
     "image": "https://images.unsplash.com/photo-1572441710553-63b4f09f8b2e"
   },
   {
-    "name": "Mango",
+    "name": "Mango Demo",
     "description": {
       "en": "Sweet mangoes packed with Vitamin C.",
       "fr": "Mangues sucrées riches en vitamine C."
