@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1750667260759" clover="3.2.0">
-  <project timestamp="1750667260759" name="All files">
+<coverage generated="1750674294116" clover="3.2.0">
+  <project timestamp="1750674294120" name="All files">
     <metrics statements="198" coveredstatements="149" conditionals="36" coveredconditionals="14" methods="16" coveredmethods="6" elements="250" coveredelements="169" complexity="0" loc="198" ncloc="198" packages="5" files="22" classes="22"/>
     <package name="agroecology-api">
       <metrics statements="18" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
