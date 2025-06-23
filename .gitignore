@@ -1,2 +1,8 @@
-.env
 node_modules/
+.env
+.env.test
+uploads/
+coverage/
+logs/
+*.log
+.DS_Store
