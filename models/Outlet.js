@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// Schema for outlet locations
+// Schema for outlet locations with region, coordinates, and categories
 const OutletSchema = new mongoose.Schema({
   name: { type: String, required: true },
   coordinates: {

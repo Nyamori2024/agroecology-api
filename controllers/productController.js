@@ -1,12 +1,12 @@
 const Product = require('../models/Product');
 
-// GET /products - Public: Fetch localized product list
+// GET /products - Public: Returns localized product list based on Accept-Language
 exports.getProducts = async (req, res) => {
   const lang = req.language || 'en';
   try {
     const products = await Product.find();
 
-    // Replace description with localized text
+    // Map and override description with localized version
     const localized = products.map(prod => ({
       ...prod.toObject(),
       description: prod.description[lang] || prod.description['en'],

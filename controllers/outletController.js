@@ -1,6 +1,6 @@
 const Outlet = require('../models/Outlet');
 
-// GET /outlets - Public: Returns list of outlet locations
+// GET /outlets - Public: Fetch all outlet locations with details
 exports.getOutlets = async (req, res) => {
   try {
     const outlets = await Outlet.find();

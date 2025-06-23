@@ -1,6 +1,6 @@
 const Blog = require('../models/Blog');
 
-// GET /blogs - Public: Fetches all blog posts sorted by latest
+// GET /blogs - Public: Fetch all blog posts, sorted from newest to oldest
 exports.getBlogs = async (req, res) => {
   try {
     const blogs = await Blog.find().sort({ createdAt: -1 });
@@ -11,12 +11,12 @@ exports.getBlogs = async (req, res) => {
   }
 };
 
-// POST /blogs - Protected: Create blog post, attach user from token
- exports.createBlog = async (req, res) => {
+// POST /blogs - Protected: Create a new blog post using the authenticated user's username
+exports.createBlog = async (req, res) => {
   try {
     const blog = new Blog({
       ...req.body,
-      author: req.user.username // Extracted from authenticated JWT
+      author: req.user.username // Automatically assigned from decoded JWT
     });
     await blog.save();
     res.status(201).json(blog);

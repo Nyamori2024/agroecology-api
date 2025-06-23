@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// Schema for multilingual FAQs
+// Schema for multilingual FAQ entries (English and French)
 const FaqSchema = new mongoose.Schema({
   question: {
     en: { type: String, required: true },
