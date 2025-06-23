@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">78.57% </span>
+                <span class="strong">21.42% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/14</span>
+                <span class='fraction'>3/14</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">78.57% </span>
+                <span class="strong">21.42% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/14</span>
+                <span class='fraction'>3/14</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -90,13 +90,13 @@
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">7x</span>
+<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -104,44 +104,44 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const Blog = require('../models/Blog');
 &nbsp;
-// GET /blogs
-exports.getBlogs = async (req, res) =&gt; {
-  try {
-    const blogs = await Blog.find().sort({ createdAt: -1 });
-    res.json(blogs);
+// GET /blogs - Public: Fetches all blog posts sorted by latest
+exports.getBlogs = <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
+<span class="cstat-no" title="statement not covered" >  try {</span>
+    const blogs = <span class="cstat-no" title="statement not covered" >await Blog.find().sort({ createdAt: -1 });</span>
+<span class="cstat-no" title="statement not covered" >    res.json(blogs);</span>
   } catch (err) {
 <span class="cstat-no" title="statement not covered" >    console.error('Error fetching blogs:', err);</span>
 <span class="cstat-no" title="statement not covered" >    res.status(500).json({ error: 'Server error' });</span>
   }
 };
 &nbsp;
-// POST /blogs (JWT protected)
-exports.createBlog = async (req, res) =&gt; {
-  try {
-    const blog = new Blog({
+// POST /blogs - Protected: Create blog post, attach user from token
+ exports.createBlog = <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
+<span class="cstat-no" title="statement not covered" >  try {</span>
+    const blog = <span class="cstat-no" title="statement not covered" >new Blog({</span>
       ...req.body,
-      author: req.user.username // Inject authenticated user's username
+      author: req.user.username // Extracted from authenticated JWT
     });
-    await blog.save();
+<span class="cstat-no" title="statement not covered" >    await blog.save();</span>
 <span class="cstat-no" title="statement not covered" >    res.status(201).json(blog);</span>
   } catch (err) {
-    console.error('Error creating blog:', err);
-    res.status(400).json({ error: 'Invalid blog data' });
+<span class="cstat-no" title="statement not covered" >    console.error('Error creating blog:', err);</span>
+<span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: 'Invalid blog data' });</span>
   }
 };
 &nbsp;</pre></td></tr></table></pre>
@@ -151,7 +151,7 @@ exports.createBlog = async (req, res) =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-21T16:38:56.519Z
+                at 2025-06-23T05:05:02.974Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

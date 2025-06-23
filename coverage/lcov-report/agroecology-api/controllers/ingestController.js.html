@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">86.36% </span>
+                <span class="strong">89.28% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>19/22</span>
+                <span class='fraction'>25/28</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/4</span>
+                <span class='fraction'>4/6</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90% </span>
+                <span class="strong">92.3% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>18/20</span>
+                <span class='fraction'>24/26</span>
             </div>
         
             
@@ -98,14 +98,27 @@
 <a name='L33'></a><a href='#L33'>33</a>
 <a name='L34'></a><a href='#L34'>34</a>
 <a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -114,6 +127,8 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -125,6 +140,17 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -139,7 +165,7 @@ const Outlet = require('../models/Outlet');
 const Faq = require('../models/Faq');
 const Blog = require('../models/Blog');
 &nbsp;
-// POST /ingest/:type
+// POST /ingest/:type - Protected: Upload JSON data to MongoDB by type
 exports.ingestData = async (req, res) =&gt; {
   const { type } = req.params;
   const filePath = req.file?.path;
@@ -149,22 +175,35 @@ exports.ingestData = async (req, res) =&gt; {
   try {
     const raw = fs.readFileSync(filePath, 'utf8');
     const data = JSON.parse(raw);
+&nbsp;
+    // Maps type to its model and unique field to prevent duplicates
     const modelMap = {
-      products: Product,
-      outlets: Outlet,
-      faqs: Faq,
-      blogs: Blog,
+      products: { model: Product, uniqueField: 'name' },
+      outlets: { model: Outlet, uniqueField: 'name' },
+      faqs: { model: Faq, uniqueField: 'question' },
+      blogs: { model: Blog, uniqueField: 'title' },
     };
 &nbsp;
-    const Model = modelMap[type];
-    if (!Model) return res.status(400).json({ message: 'Invalid type' });
+    const config = modelMap[type];
+    if (!config) return res.status(400).json({ message: 'Invalid type' });
 &nbsp;
-    await Model.insertMany(data);
-    fs.unlinkSync(filePath); // cleanup
+    const { model: Model, uniqueField } = config;
+    let insertedCount = 0;
 &nbsp;
-    res.json({ message: `${type} data ingested successfully` });
+    // Avoid duplicate insertion based on unique field
+    for (const item of data) {
+      const exists = await Model.findOne({ [uniqueField]: item[uniqueField] });
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (!exists) {
+        await new Model(item).save();
+        insertedCount++;
+      }
+    }
+&nbsp;
+    fs.unlinkSync(filePath); // Delete uploaded file after processing
+&nbsp;
+    res.status(201).json({ message: `${insertedCount} new ${type} added successfully` });
   } catch (err) {
-<span class="cstat-no" title="statement not covered" >    console.error('Data ingestion error:', err);</span>
+<span class="cstat-no" title="statement not covered" >    console.error('Data ingestion error:', err.message);</span>
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: 'Invalid data or file' });</span>
   }
 };
@@ -175,7 +214,7 @@ exports.ingestData = async (req, res) =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-21T16:38:56.519Z
+                at 2025-06-23T05:05:02.974Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

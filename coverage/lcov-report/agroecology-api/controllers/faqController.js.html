@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">20% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>8/10</span>
+                <span class='fraction'>2/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/6</span>
+                <span class='fraction'>0/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">77.77% </span>
+                <span class="strong">22.22% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/9</span>
+                <span class='fraction'>2/9</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -80,18 +80,24 @@
 <a name='L15'></a><a href='#L15'>15</a>
 <a name='L16'></a><a href='#L16'>16</a>
 <a name='L17'></a><a href='#L17'>17</a>
-<a name='L18'></a><a href='#L18'>18</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">7x</span>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -99,16 +105,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const Faq = require('../models/Faq');
 &nbsp;
-// GET /faqs
-exports.getFaqs = async (req, res) =&gt; {
-  const lang = req.language || <span class="branch-1 cbranch-no" title="branch not covered" >'en';</span>
-  try {
-    const faqs = await Faq.find();
-    const localized = faqs.map(faq =&gt; ({
-      question: faq.question[lang] || <span class="branch-1 cbranch-no" title="branch not covered" >faq.question['en'],</span>
-      answer: faq.answer[lang] || <span class="branch-1 cbranch-no" title="branch not covered" >faq.answer['en'],</span>
+// GET /faqs - Public: Returns localized FAQ content
+exports.getFaqs = <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
+  const lang = <span class="cstat-no" title="statement not covered" >req.language || 'en';</span> // Default language fallback
+<span class="cstat-no" title="statement not covered" >  try {</span>
+    const faqs = <span class="cstat-no" title="statement not covered" >await Faq.find();</span>
+&nbsp;
+    // Localize each question/answer per requested language
+    const localized = <span class="cstat-no" title="statement not covered" >faqs.map(<span class="fstat-no" title="function not covered" >fa</span>q =&gt; (<span class="cstat-no" title="statement not covered" >{</span></span>
+      question: faq.question[lang] || faq.question['en'],
+      answer: faq.answer[lang] || faq.answer['en'],
     }));
-    res.json(localized);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    res.json(localized);</span>
   } catch (err) {
 <span class="cstat-no" title="statement not covered" >    console.error('FAQ error:', err);</span>
 <span class="cstat-no" title="statement not covered" >    res.status(500).json({ error: 'Server error' });</span>
@@ -121,7 +130,7 @@ exports.getFaqs = async (req, res) =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-21T16:38:56.519Z
+                at 2025-06-23T05:05:02.974Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
