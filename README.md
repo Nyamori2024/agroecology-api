@@ -9,7 +9,7 @@ This API handles **product listings**, **FAQs**, **blogs**, **regional outlet da
 ## 🧰 Tech Stack
 
 - **Backend:** Node.js, Express  
-- **Database:** MongoDB Atlas (Mongoose ODM)  
+- **Database:** MongoDB Atlas (Mongoose ORM)  
 - **Auth:** JSON Web Tokens (JWT)  
 - **File Uploads:** Multer  
 - **Testing:** Jest, Supertest  
