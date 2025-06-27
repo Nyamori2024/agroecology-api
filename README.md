@@ -42,7 +42,7 @@ This API handles **product listings**, **FAQs**, **blogs**, **regional outlet da
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/agroecology-api.git
+git clone https://github.com/Nyamori2024/agroecology-api.git
 cd agroecology-api
 ```
 
