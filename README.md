@@ -170,13 +170,13 @@ Uploaded files are stored in `/uploads`.
 
 ## 📸 Sample Demo Flow
 
-In your recorded video or live presentation:
+The following steps are demonstrated in the submitted Loom video (shared via email with the WebMasters Kenya Hiring Team):
 
-1. Register a user → receive JWT  
-2. Upload sample `products.json` via `/ingest/products`  
-3. Retrieve products list via `/products`  
-4. Access a protected endpoint with the JWT  
-5. Run `npm test` to show green tests and teardown logs
+1. Register a user → receive JWT
+2. Upload sample `products.json` via `/ingest/products`
+3. Retrieve products list via `/products`
+4. Access a protected endpoint using the JWT token
+5. Run `npm test` to show passing tests and clean teardown
 
 ---
 
